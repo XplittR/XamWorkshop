@@ -11,10 +11,24 @@
              Title="{Binding Film.Title}"
              BackgroundColor="Black">
     <Grid BindingContext="{Binding Film}">
-        <!--Image HorizontalOptions="Fill"
+        <Image HorizontalOptions="Fill"
                VerticalOptions="Fill"
-               Aspect="AspectFill"
-               Source="starwarsintrobg.jpg" /-->
+               Aspect="AspectFill">
+            <Image.Source>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <OnPlatform.iOS>
+                        <FileImageSource File="starwarsintrobg.jpg"/>
+                    </OnPlatform.iOS>
+                    <OnPlatform.Android>
+                        <FileImageSource File="starwarsintrobg.jpg"/>
+                    </OnPlatform.Android>
+                    <OnPlatform.WinPhone>
+                        <FileImageSource File="Images/starwarsintrobg.jpg"/>
+                    </OnPlatform.WinPhone>
+                </OnPlatform>
+            </Image.Source>
+        </Image>
+
         <ScrollView x:Name="TextScrollView"
                     Orientation="Vertical"
                     RotationX="24"
