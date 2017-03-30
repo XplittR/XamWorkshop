@@ -2,17 +2,20 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 using XamWorkshop.Models;
 using XamWorkshop.Services;
+using XamWorkshop.Views;
 
 namespace XamWorkshop.ViewModels {
     public class MoviesViewModel : INotifyPropertyChanged {
-        public MoviesViewModel() {
+        private INavigation _navigation;
+        public MoviesViewModel(INavigation navigation) {
+            _navigation = navigation;
             Films = new List<Movie>();
             GetFilms();
         }
-
-        //private INavigation _navigation;
+        
         private IList<Movie> _films;
         public IList<Movie> Films {
             get { return _films; }
@@ -20,6 +23,16 @@ namespace XamWorkshop.ViewModels {
                 if (_films != value) {
                     _films = value;
                     OnPropertyChanged();
+                }
+            }
+        }
+
+        public Movie SelectedFilm {
+            set {
+                if (value != null) {
+                    var viewModel = new FilmViewModel(){Film = value,};
+                    var page = new FilmPage(viewModel);
+                    _navigation.PushAsync(page);
                 }
             }
         }

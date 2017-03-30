@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:XamWorkshop.ViewModels;assembly=XamWorkshop"
+             mc:Ignorable="d"
+             x:Class="XamWorkshop.Views.FilmPage"
+             d:DataContext="{d:DesignInstance viewModels:FilmViewModel}"
+             Title="{Binding Film.Title}"
+             BackgroundColor="Black">
+    <Grid BindingContext="{Binding Film}">
+        <!--Image HorizontalOptions="Fill"
+               VerticalOptions="Fill"
+               Aspect="AspectFill"
+               Source="starwarsintrobg.jpg" /-->
+        <ScrollView x:Name="TextScrollView"
+                    Orientation="Vertical"
+                    RotationX="24"
+                    Margin="0,0,0,24">
+            <ScrollView.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                            iOS="16,300"
+                            Android="16,0" />
+            </ScrollView.Padding>
+            <StackLayout Orientation="Vertical" Spacing="50">
+                <Label x:Name="Text"
+                       HorizontalOptions="Fill"
+                       FontAttributes="Bold"
+                       FontSize="30"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding OpeningCrawl}"
+                       TextColor="Yellow" />
+
+                <Label HorizontalTextAlignment="Center"
+                       Text="{Binding EpisodeId,
+                                          StringFormat='Episode: {0}'}"
+                       TextColor="Yellow" />
+                <Label HorizontalTextAlignment="Center"
+                       Text="{Binding ReleaseDate,
+                                          StringFormat='Released: {0}'}"
+                       TextColor="Yellow" />
+
+                <Label HorizontalTextAlignment="Center"
+                       Text="{Binding Director,
+                                          StringFormat='Director: {0}'}"
+                       TextColor="Yellow" />
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Label FontAttributes="Bold"
+                           Text="Producer: "
+                           TextColor="Yellow" />
+                    <Label Text="{Binding Producer}" TextColor="Yellow" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

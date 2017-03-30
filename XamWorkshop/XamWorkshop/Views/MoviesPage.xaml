@@ -9,6 +9,7 @@
              d:DataContext="{d:DesignInstance viewModels:MoviesViewModel}">
     <ListView VerticalOptions="FillAndExpand"
               ItemsSource="{Binding Films}"
+              SelectedItem="{Binding SelectedFilm}"
               SeparatorVisibility="Default">
         <ListView.ItemTemplate>
             <DataTemplate>
