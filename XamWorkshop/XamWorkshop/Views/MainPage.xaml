@@ -5,7 +5,12 @@
              x:Class="XamWorkshop.Views.MainPage">
     <NavigationPage Title="Movies">
         <x:Arguments>
-            <views:Movies/>
+            <views:MoviesPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Characters">
+        <x:Arguments>
+            <views:CharactersPage/>
         </x:Arguments>
     </NavigationPage>
 </TabbedPage>

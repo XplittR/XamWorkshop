@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace XamWorkshop.Views {
-    
-    public partial class Movies : ContentPage {
-        public Movies() {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CharactersPage : ContentPage {
+        public CharactersPage() {
             InitializeComponent();
         }
     }
