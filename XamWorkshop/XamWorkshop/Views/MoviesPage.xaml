@@ -1,6 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamWorkshop.Views.MoviesPage">
-    <Label Text="Movies"/>
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:XamWorkshop.ViewModels;assembly=XamWorkshop"
+             mc:Ignorable="d"
+             x:Class="XamWorkshop.Views.MoviesPage"
+             d:DataContext="{d:DesignInstance viewModels:MoviesViewModel}">
+    <ListView VerticalOptions="FillAndExpand"
+              ItemsSource="{Binding Films}"
+              SeparatorVisibility="Default">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ImageCell Text="{Binding Title}" TextColor="#000000" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
