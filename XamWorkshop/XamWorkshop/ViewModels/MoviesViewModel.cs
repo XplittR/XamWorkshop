@@ -2,13 +2,15 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using PropertyChanged;
 using Xamarin.Forms;
 using XamWorkshop.Models;
 using XamWorkshop.Services;
 using XamWorkshop.Views;
 
 namespace XamWorkshop.ViewModels {
-    public class MoviesViewModel : INotifyPropertyChanged {
+    [ImplementPropertyChanged]
+    public class MoviesViewModel  {
         private INavigation _navigation;
         public MoviesViewModel(INavigation navigation) {
             _navigation = navigation;
@@ -16,16 +18,7 @@ namespace XamWorkshop.ViewModels {
             GetFilms();
         }
         
-        private IList<Movie> _films;
-        public IList<Movie> Films {
-            get { return _films; }
-            set {
-                if (_films != value) {
-                    _films = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        public IList<Movie> Films { get; set; }
 
         public Movie SelectedFilm {
             set {
@@ -45,9 +38,9 @@ namespace XamWorkshop.ViewModels {
 
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        /*public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        }*/
     }
 }
